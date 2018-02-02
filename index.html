@@ -27,7 +27,7 @@
     document.addEventListener("DOMContentLoaded", function () {
 
       request = new XMLHttpRequest;
-      request.open("GET", "https://api.giphy.com/v1/gifs/random?tag=panda&api_key=dc6zaTOxFJmzC", true);
+      request.open("GET", "https://api.giphy.com/v1/gifs/random?tag=cute%20animal&api_key=dc6zaTOxFJmzC", true);
 
       request.onload = function() {
         if (request.status >= 200 && request.status < 400){
