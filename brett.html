@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Random GIF to spread happiness</title>
+  <meta name="viewport" content="width=device-width">
+  <style>
+    html, * {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    body {
+      background-size: contain;
+      background-repeat: no-repeat;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+      request = new XMLHttpRequest;
+      request.open("GET", "https://philippegirard.github.io/money_moves.gif", true);
+
+      request.onload = function() {
+        if (request.status >= 200 && request.status < 400){
+          data = JSON.parse(request.responseText).data.image_url;
+          console.log(data);
+          document.body.style.backgroundImage = "url('" +data+ "')";
+          // document.body.style.backgroundSize = "cover";
+        } else {
+          console.log("reached giphy, but API returned an error");
+         }
+      };
+
+      request.onerror = function() {
+        console.log("connection error");
+      };
+
+      request.send();
+    });
+  </script>
+  <div id="giphy" style="width: 400px; height: 300px;"></div>
+</body>
+</html>
